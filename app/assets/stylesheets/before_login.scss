@@ -24,8 +24,10 @@
   font-family: 'Helvetica Neue','Helvetica','Arial',YuGothic,'Yu Gothic','Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3','メイリオ', Meiryo,'ＭＳ ゴシック',sans-serif;
 }
 
+/*　サイドバーのicon */
 .logo-header i {
   position: fixed;
+  z-index: 2000;
   top: 80px;
   right: 80px;
   display: flex;
@@ -35,10 +37,17 @@
   height: 72px;
 
   background-color: #ff5757;
-  border-radius: 40px;
+  border-radius: 30px;
   color: #fff;
   font-size: 30px;
   cursor: pointer;
+  transition: all 1s ease;
+}
+
+.logo-header i.active {
+  transform: rotate(90deg);
+  background-color: #fff;
+  color: #ff5757;
 }
 
 .sub-title-container {

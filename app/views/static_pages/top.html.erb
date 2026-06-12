@@ -7,6 +7,28 @@
     <i class="fa-solid fa-list-ul"></i>
   </div>
 
+  <nav class="hamburger-menu" id="hamburger-menu">
+      <ul>
+        <li class="nav-item">
+        <i class="fa-solid fa-user-plus"></i>
+          <%= link_to "#",
+              class: "nav-link" do %>
+            新規登録
+          <% end %>
+        </li>
+        
+        <li class="nav-item">
+        <i class="fa-solid fa-right-to-bracket"></i>
+          <%= link_to "#",
+              class: "nav-link" do %>
+            ログイン
+          <% end %>
+        </li>
+      </ul>
+  </nav>
+  <!-- overlay-->
+  <div id="menu-overlay" class="menu-overlay"></div>
+
   <div class="sub-title-container">
     <h1>宿題がわかる<br>って最高じゃん？</h1>
     <div class="login-btn">
@@ -21,7 +43,6 @@
       </div>
     </div>
   </div>
-
 </section>
 
 <section class="feature-one-title-section">
