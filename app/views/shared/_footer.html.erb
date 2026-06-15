@@ -1,0 +1,25 @@
+<footer class="site-footer">
+  <div class="footer-inner">
+
+    <!-- ロゴ・キャッチ -->
+    <div class="footer-brand">
+      <%= image_tag "/logo.png", alt: "HomeWork", class: "footer-logo" %>
+      <span class="footer-title">HomeMark</span>
+    </div>
+
+    <p class="footer-tagline">宿題がわかるって、最高。</p>
+
+    <!-- リンク -->
+    <nav class="footer-links">
+      <%= link_to "ホーム", root_path %>
+      <%= link_to "ログイン", "#" %>
+      <%= link_to "新規登録", "#" %>
+    </nav>
+
+    <!-- コピーライト -->
+    <p class="footer-copyright">
+      &copy; <%= Time.current.year %> HomeWork. All rights reserved.
+    </p>
+
+  </div>
+</footer>
