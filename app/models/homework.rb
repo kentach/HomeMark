@@ -5,6 +5,8 @@ class Homework < ApplicationRecord
   validates :test_end_date, presence: true
 
   belongs_to :classroom
+  has_many :tasks, dependent: :destroy
+
   #ransack
   # 検索可能なカラムを許可する
   def self.ransackable_attributes(auth_object = nil)

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2026_06_15_080646) do
+ActiveRecord::Schema[7.2].define(version: 2026_06_18_025107) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -36,6 +36,14 @@ ActiveRecord::Schema[7.2].define(version: 2026_06_15_080646) do
     t.index ["user_id"], name: "index_homeworks_on_user_id"
   end
 
+  create_table "tasks", force: :cascade do |t|
+    t.string "name", null: false
+    t.bigint "homework_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["homework_id"], name: "index_tasks_on_homework_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -51,4 +59,5 @@ ActiveRecord::Schema[7.2].define(version: 2026_06_15_080646) do
 
   add_foreign_key "homeworks", "classrooms"
   add_foreign_key "homeworks", "users"
+  add_foreign_key "tasks", "homeworks"
 end

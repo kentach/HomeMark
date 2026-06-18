@@ -1,3 +1,4 @@
+Task.delete_all
 Homework.delete_all
 Classroom.delete_all
 User.delete_all
@@ -18,7 +19,20 @@ pre1_week30 = pre1.homeworks.create!(
   title: '準1級 Week30 宿題',
   test_start_date: Date.today,
   test_end_date: Date.today + 7.days,
-  user_id: user1.id
+  user_id: user1.id,
+  status: "published"
+)
+
+pre1_week30.tasks.create!(
+  name: 'Week30 単語テスト #1〜60'
+)
+
+pre1_week30.tasks.create!(
+  name: 'STEP TALK p.32 Writingの賛成意見を書いて提出。'
+)
+
+pre1_week30.tasks.create!(
+  name: 'STEP Power p23の一段落目を音読 最低10回'
 )
 
 step2 = Classroom.create!(
@@ -30,7 +44,17 @@ step2_week30 = step2.homeworks.create!(
   title: '2級 Week30 宿題',
   test_start_date: Date.today,
   test_end_date: Date.today + 7.days,
-  user_id: user1.id
+  user_id: user1.id,
+  status: "published"
+)
+
+
+step2_week30.tasks.create!(
+  name: 'Week30 単語テスト #1~50',
+)
+
+step2_week30.tasks.create!(
+  name: 'STEP TALK p.34 賛成意見を書いて提出。',
 )
 
 
