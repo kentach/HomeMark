@@ -1,8 +1,8 @@
 <div class="tab-panel" id="panel-complete">
-  <% complete_groups = @homeworks.select { |homework| homework.tasks.any? { |t| !current_user.completed?(t) } } %>
+  <% complete_groups = @homeworks.select { |homework| homework.tasks.all? { |t| current_user.completed?(t) } } %>
     <% if complete_groups.any? %>
       <% complete_groups.each do |homework| %>
-      <% tasks_to_show = homework.tasks.reject { |t| current_user.completed?(t) } %>
+        <% tasks_to_show = homework.tasks %>
         <div class="homework-group">
           <div class="homework-group-header">
             <div class="homework-group-meta">
@@ -21,7 +21,7 @@
               <div id="task-<%= task.id %>" class="task-item completed">
                 <label class="task-check-wrap">
                   <div id="completed-button-for-task-<%= task.id %>">
-                  <%= render "task_completions/completed_button", task: task %>
+                    <%= render "task_completions/completed_button", task: task %>
                   </div>
                   <span class="task-name"><%= task.name %></span>
                 </label>
