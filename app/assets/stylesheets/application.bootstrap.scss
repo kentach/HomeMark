@@ -3,10 +3,17 @@
 
 //ヘッダー
 @import 'header/after_login_header';
-@import 'header/before_login_header';
 
+// フラッシュメッセージ
+
+// ログイン前画面
 @import 'before_login';
 @import 'footer';
+@import 'header/before_login_header';
+
+// サインイン・サインアップ
+@import "sign_in";
+@import "sign_up";
 
 //宿題の一覧画面
 @import 'homework_index/index';
