@@ -3,17 +3,20 @@
 
 //ヘッダー
 @import 'header/after_login_header';
-
-// フラッシュメッセージ
-
-// ログイン前画面
-@import 'before_login';
-@import 'footer';
 @import 'header/before_login_header';
 
+// フラッシュメッセージ
+@import 'shared/flash_message';
+
+//ナビゲーションバー
+@import 'shared/navigation_bar';
+
+// ログイン前画面
+@import 'before_login/before_login';
+@import 'before_login/footer';
 // サインイン・サインアップ
-@import "sign_in";
-@import "sign_up";
+@import "before_login/sign_in";
+@import "before_login/sign_up";
 
 //宿題の一覧画面
 @import 'homework_index/index';
@@ -21,10 +24,7 @@
 //宿題の詳細画面
 @import 'homework_show/show';
 
-//共通部分
-@import 'shared/navigation_bar';
-
-//マイタスク
+//タスク
 @import 'task/index';
 
 @import 'completed_button/button';

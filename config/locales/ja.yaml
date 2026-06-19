@@ -1,0 +1,21 @@
+ja:
+  static_pages:
+
+  registrations:
+    new: 新規登録
+    edit: リセット
+
+  sessions:
+    new: ログイン
+
+  homeworks:
+    index:
+      title: 宿題一覧
+    show:
+      title: 宿題詳細
+
+  tasks:
+    index:
+      title: マイタスク一覧
+    show:
+      title: マイタスク詳細
