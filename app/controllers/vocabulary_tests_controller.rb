@@ -1,10 +1,10 @@
 class VocabularyTestsController < ApplicationController
   def index
-    @scores = VocabularyTest.order(test_date: :desc, created_at: :desc)
     @new_score = VocabularyTest.new(test_date: Date.today)
-    @homeworks = Homework.where(classroom_id: current_user.classroom_id)
-                         .order(created_at: :desc)
+    @homeworks = Homework.where(classroom_id: current_user.classroom_id).order(created_at: :desc)
+    @scores = VocabularyTest.includes(:homework).order(test_date: :desc, created_at: :desc)
   end
+
 
   def show
     @score = VocabularyTest.find(params[:id])
@@ -20,8 +20,7 @@ class VocabularyTestsController < ApplicationController
       redirect_to vocabulary_tests_path, notice: "単語テストを新しく記録しました。"
     else
       @scores = VocabularyTest.order(test_date: :desc, created_at: :desc)
-      @homeworks = Homework.where(classroom_id: current_user.classroom_id)
-                           .order(created_at: :desc)
+      @homeworks = Homework.where(classroom_id: current_user.classroom_id).order(created_at: :desc)
       render :index, status: :unprocessable_entity
     end
   end
@@ -30,6 +29,14 @@ class VocabularyTestsController < ApplicationController
     @score = VocabularyTest.find(params[:id])
     @score.destroy!
     redirect_to vocabulary_tests_path, notice: "記録を削除しました。"
+  end
+
+  def score_graph
+    @scores = current_user.vocabulary_tests.includes(:homework).order(test_date: :asc)
+    @score_data = [
+      { name: "単語テスト", data: @scores.map { |score| [score.homework.title, score.vocabulary_score, score.sentence_score] } },
+      { name: "文テスト", data: @scores.map { |score| [score.homework.title, score.sentence_score, score.sentence_score] } }
+    ]
   end
 
   private

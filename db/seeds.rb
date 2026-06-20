@@ -1,3 +1,4 @@
+VocabularyTest.delete_all
 TaskCompletion.delete_all
 Task.delete_all
 Homework.delete_all
@@ -49,7 +50,7 @@ created_classrooms.each do |classroom|
   4.times do |week|
 
     homework = classroom.homeworks.create!(
-      title: "#{classroom.eiken_level} Week#{week + 1} 宿題",
+      title: "#{classroom.eiken_level} Week#{week + 1}",
       test_start_date: Date.today + week.weeks,
       test_end_date: Date.today + week.weeks + 7.days,
       user_id: user1.id,
