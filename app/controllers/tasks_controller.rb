@@ -3,9 +3,16 @@ class TasksController < ApplicationController
   before_action :set_date, only: :index
 
   def index
-      @classroom = current_user.classroom
-      @homeworks = @classroom.homeworks.includes(:tasks)
-      @tasks = @homeworks.flat_map(&:tasks)
+    set_date
+    @classroom = current_user.classroom
+  
+    @homeworks = @classroom.homeworks.includes(:tasks).where(
+                            "test_start_date <= ? AND test_end_date >= ?",
+                            @selected_date,
+                            @selected_date
+                          )
+
+    @tasks = @homeworks.flat_map(&:tasks)
   end
 
   private

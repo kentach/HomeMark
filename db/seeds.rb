@@ -52,7 +52,7 @@ created_classrooms.each do |classroom|
     homework = classroom.homeworks.create!(
       title: "#{classroom.eiken_level} Week#{week + 1}",
       test_start_date: Date.today + week.weeks,
-      test_end_date: Date.today + week.weeks + 7.days,
+      test_end_date: Date.today + week.weeks + 6.days,
       user_id: user1.id,
       status: "published"
     )

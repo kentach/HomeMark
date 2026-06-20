@@ -5,11 +5,6 @@ class VocabularyTestsController < ApplicationController
     @scores = VocabularyTest.includes(:homework).order(test_date: :desc, created_at: :desc)
   end
 
-
-  def show
-    @score = VocabularyTest.find(params[:id])
-  end
-
   def new 
     VocabularyTest.new
   end
@@ -23,6 +18,22 @@ class VocabularyTestsController < ApplicationController
       @homeworks = Homework.where(classroom_id: current_user.classroom_id).order(created_at: :desc)
       render :index, status: :unprocessable_entity
     end
+  end
+
+  def edit
+    @score = current_user.vocabulary_tests.find(params[:id])
+    @homeworks = Homework.where(classroom_id: current_user.classroom_id).order(created_at: :desc)
+  end
+
+  def update
+    @score = current_user.vocabulary_tests.find(params[:id])
+    if @score.update(score_params)
+      redirect_to vocabulary_tests_path, notice: "単語テストを更新しました。"
+    else
+      flash.now[:danger] = "更新できませんでした。"
+      render :edit, status: :unprocessable_entity
+    end
+
   end
 
   def destroy
