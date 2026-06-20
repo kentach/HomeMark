@@ -1,0 +1,31 @@
+  <div class="vocabulary-tests-table-wrapper">
+    <table class="vocabulary-tests-table">
+      <thead>
+        <tr>
+          <th>日付</th>
+          <th>宿題</th>
+          <th>単語テスト</th>
+          <th>文テスト</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @scores.each do |score| %>
+          <tr>
+            <td><%= score.test_date&.strftime("%Y/%m/%d") %></td>
+            <td><%= score.homework&.title %></td>
+            <td><%= score.vocabulary_score %></td>
+            <td><%= score.sentence_score %></td>
+            <td>
+              <div class="action-menu">
+                <%= link_to "削除", vocabulary_test_path(score),
+                    class: "delete-btn",
+                    data: { turbo_method: :delete, turbo_confirm: "削除しますか？" } %>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
