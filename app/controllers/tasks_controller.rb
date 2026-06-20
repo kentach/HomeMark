@@ -15,6 +15,11 @@ class TasksController < ApplicationController
     @tasks = @homeworks.flat_map(&:tasks)
   end
 
+  def show
+    @homework = Homework.find(params[:id])
+    @tasks = @homework.tasks
+  end
+
   private
 
   def set_date
