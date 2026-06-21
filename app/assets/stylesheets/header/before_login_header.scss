@@ -11,13 +11,18 @@
   transition: clip-path 3s ease;
 
   @media (max-width: 768px) {
-    width: 100vw;  // スマホでは全画面幅
+    width: 100vw;
     padding-top: 60px;
+    clip-path: circle(0 at calc(100% - 26px) 26px);  // ← 追加
   }
 }
 
 .hamburger-menu.open {
   clip-path: circle(1200px at top right);
+
+  @media (max-width: 768px) {
+    clip-path: circle(1200px at calc(100% - 26px) 26px);
+  }
 }
 
 .hamburger-menu ul {
@@ -36,7 +41,7 @@
   transition: 0.3s;
 
   @media (max-width: 768px) {
-    padding: 14px 24px;  // 左右の余白を縮小
+    padding: 14px 24px;  
     font-size: 1.1rem;
   }
 }
