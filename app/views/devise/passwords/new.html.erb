@@ -1,16 +1,23 @@
-<h2>Forgot your password?</h2>
+<% content_for :title, I18n.t('views.sessions.new.title') %>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+<div class="sign-in-container">
+  <%= render "shared/before_login_header" %>
+  <div class="login-card">
+    <h2 class="login-title">パスワードリセット</h2>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { method: :post }) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <p><%= f.label :email %></p>
-    <p><%= f.email_field :email, autofocus: true, autocomplete: "email" %></p>
+      <div class="form-group">
+        <%= f.label :email , "メール", class: "form-label" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Send me password reset instructions", class: "signup-btn" %>
+      </div>
+    <% end %>
+    <div class="auth-links">
+      <%= render "devise/shared/links" %>
+    </div>
   </div>
-
-  <div class="actions">
-    <%= f.submit "Send me password reset instructions" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>

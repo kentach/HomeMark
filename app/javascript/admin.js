@@ -1,5 +1,6 @@
 import "bootstrap";
 import "admin-lte";
+import "@hotwired/turbo-rails"
 
 document.addEventListener("turbo:load", initAdmin);
 document.addEventListener("DOMContentLoaded", initAdmin);

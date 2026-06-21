@@ -11,7 +11,7 @@
             <tr>
               <th>タイトル</th>
               <th>ステータス</th>
-              <th>クラス</th>
+              <th>クラス名</th>
               <th>宿題開始日</th>
               <th>宿題終了日</th>
               <th>編集</th>
@@ -23,14 +23,14 @@
               <tr>
                 <td><%= homework.title %></td>
                 <td><%= homework.status %></td>
-                <td><%= homework.classroom&.name %></td>
+                <td><%= homework.classroom&.eiken_level %></td>
                 <td><%= homework.test_start_date&.strftime("%Y/%m/%d") %></td>
                 <td><%= homework.test_end_date&.strftime("%Y/%m/%d") %></td>
                 <td>
                   <%= link_to "編集", edit_admin_homework_path(homework), class: "btn btn-sm btn-warning" %>
                 </td>
                 <td>
-                  <%= button_to "削除", admin_homework_path(homework), method: :delete, data: { turbo_confirm: "削除しますか？" }, class: "btn btn-sm btn-danger" %>
+                  <%= link_to "削除", admin_homework_path(homework), data: { turbo_method: :delete, turbo_confirm: "削除しますか？" }, class: "btn btn-sm btn-danger" %>
                 </td>
               </tr>
             <% end %>

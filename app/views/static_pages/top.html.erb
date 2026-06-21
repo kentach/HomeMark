@@ -1,7 +1,7 @@
 <section class="lp-page-container">
   <div class="logo-header">
     <div class="logo">
-      <%= image_tag "/logo.png", alt: "What's My Homework?", width: "50px", height: "50px" %>
+      <%= image_tag "/logo.png", alt: "What's My Homework?", width: "40px", height: "40px" %>
       <h1>What's My Homework?</h1>
     </div>
     <i class="fa-solid fa-list-ul"></i>
@@ -49,17 +49,5 @@
 <%= render "static_pages/feature2" %>
 <%= render "static_pages/feature3" %>
 <%= render "static_pages/feature4" %>
-
-<section class="sign-up-btn-container">
-  <div class="sign-up-section">
-      <h1>効率よく宿題できたら、最高じゃん？</h1>
-      <p>宿題管理、始めませんか？</p>
-      <div class="cta-section-buttons mt-5">
-        <%= link_to "今すぐ始める",
-          new_user_registration_path,
-          class: "btn btn-lg btn-cta-primary rounded-pill fw-bold shadow" %>
-      </div>
-  </div>
-</section>
-
+<%= render "static_pages/bottom" %>
 <%= render "shared/footer" %>

@@ -10,7 +10,7 @@
           <thead>
             <tr>
               <th>クラス名</th>
-              <th>クラス(英語表記)</th>
+              <th>クラス名(英語表記)</th>
               <th>編集</th>
               <th>削除</th>
             </tr>
@@ -24,7 +24,7 @@
                   <%= link_to "編集", edit_admin_classroom_path(classroom), class: "btn btn-sm btn-warning" %>
                 </td>
                 <td>
-                  <%= button_to "削除", admin_classroom_path(classroom), method: :delete, data: { turbo_confirm: "削除しますか？" }, class: "btn btn-sm btn-danger" %>
+                  <%= link_to "削除", admin_classroom_path(classroom), data: { turbo_method: :delete, turbo_confirm: "削除しますか？" }, class: "btn btn-sm btn-danger" %>
                 </td>
               </tr>
             <% end %>
