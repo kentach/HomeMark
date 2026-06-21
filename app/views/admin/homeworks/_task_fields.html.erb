@@ -6,6 +6,13 @@
   </div>
   <div class="mb-2">
     <%= f.label :pdf, "PDF", class: "form-label" %>
+    <% if f.object.pdf.attached? %>
+      <div class="mb-1">
+        <i class="fas fa-file-pdf text-danger"></i>
+        <%= link_to f.object.pdf.filename, url_for(f.object.pdf), target: "_blank", class: "text-decoration-none" %>
+      </div>
+    <% end %>
+
     <%= f.file_field :pdf, class: "form-control", accept: "application/pdf" %>
   </div>
   <%= f.hidden_field :_destroy, class: "destroy-flag" %>

@@ -26,7 +26,7 @@ class Admin::HomeworksController < Admin::BaseController
 
   def update
     if @homework.update(homework_params)
-      redirect_to admin_homeworks_path, notice: "宿題を更新しました"
+      redirect_to admin_root_path, notice: "宿題を更新しました"
     else
       render :edit, status: :unprocessable_entity
     end
@@ -34,7 +34,15 @@ class Admin::HomeworksController < Admin::BaseController
 
   def destroy
     @homework.destroy!
-    redirect_to admin_homeworks_path, notice: "宿題を削除しました"
+    redirect_to admin_root_path, notice: "宿題を削除しました"
+  end
+
+  def draft
+    @homeworks = Homework.where(status: "draft")
+  end
+
+  def published
+    @homeworks = Homework.where(status: "published")
   end
 
   private

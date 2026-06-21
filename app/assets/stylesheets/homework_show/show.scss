@@ -87,7 +87,6 @@ $green-l:   #34d399;
   padding: 20px 16px 0;
 }
 
-// 進捗サマリ行
 .show-summary-row {
   display: flex;
   align-items: center;
@@ -234,6 +233,33 @@ $green-l:   #34d399;
   padding: 15px 16px;
   cursor: pointer;
 }
+
+.homework-show-task-content {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+.homework-show-pdf-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: $accent;
+  text-decoration: none;
+  padding: 4px 10px;
+  background: rgba($accent, 0.08);
+  border-radius: 6px;
+  width: fit-content;
+
+  i { font-size: 14px; }
+
+  &:hover {
+    background: rgba($accent, 0.15);
+  }
+} 
 
 .homework-details {
   margin: 0;

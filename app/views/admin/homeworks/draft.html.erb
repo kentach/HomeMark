@@ -1,0 +1,63 @@
+<div class="container-fluid">
+  <div class="row mb-3">
+    <div class="col-12">
+      <div class="d-flex justify-content-between align-items-center">
+        <h1 class="h3">下書き一覧</h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">
+            <i class="fas fa-edit mr-1"></i>下書き中の宿題
+            <%= @homeworks.count %>件
+          </h3>
+          <div class="card-tools">
+            <%= link_to "公開中一覧はこちら >", admin_published_homeworks_path, class: "btn btn-sm btn-success" %>
+          </div>
+        </div>
+
+        <div class="card-body p-0">
+          <% if @homeworks.empty? %>
+            <div class="text-center py-5 text-muted">
+              <i class="fas fa-inbox fa-3x mb-3"></i>
+              <p>下書き中の宿題はありません</p>
+            </div>
+          <% else %>
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>タイトル</th>
+                  <th>クラス</th>
+                  <th>宿題開始日</th>
+                  <th>宿題終了日</th>
+                  <th>作成日</th>
+                  <th>操作</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @homeworks.each do |homework| %>
+                  <tr>
+                    <td><%= homework.title %></td>
+                    <td><%= homework.classroom&.name %></td>
+                    <td><%= homework.test_start_date&.strftime("%Y/%m/%d") %></td>
+                    <td><%= homework.test_end_date.strftime("%Y/%m/%d") %></td>
+                    <td><%= homework.created_at.strftime("%Y/%m/%d") %></td>
+                    <td>
+                      <%= link_to "編集", edit_admin_homework_path(homework), class: "btn btn-sm btn-warning" %>
+                      <%= link_to "削除", admin_homework_path(homework), method: :delete,
+                            data: { confirm: "削除しますか？" }, class: "btn btn-sm btn-danger" %>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

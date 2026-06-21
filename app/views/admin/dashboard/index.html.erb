@@ -15,7 +15,7 @@
         <h3><%= @published_homeworks.count %></h3>
         <p>公開中</p>
       </div>
-      <%= link_to "一覧を見る", admin_homeworks_path, class: "small-box-footer text-white" %>
+      <%= link_to "一覧を見る", admin_published_homeworks_path, class: "small-box-footer text-white" %>
     </div>
   </div>
 
@@ -25,7 +25,7 @@
         <h3><%= @draft_homeworks.count %></h3>
         <p>下書き</p>
       </div>
-      <%= link_to "一覧を見る", admin_homeworks_path, class: "small-box-footer text-white" %>
+      <%= link_to "一覧を見る", admin_draft_homeworks_path, class: "small-box-footer text-white" %>
     </div>
   </div>
 
@@ -45,7 +45,7 @@
     <div class="card">
       <div class="card-header d-flex justify-content-between align-items-center">
         <h3 class="card-title">最近の宿題</h3>
-        <%= link_to "新規作成", new_admin_homework_path, class: "btn btn-primary btn-sm" %>
+        <%= link_to "宿題を新しく作成", new_admin_homework_path, class: "btn btn-primary btn-sm" %>
       </div>
       <div class="card-body p-0">
         <table class="table table-hover mb-0">
@@ -54,7 +54,7 @@
               <th>タイトル</th>
               <th>ステータス</th>
               <th>クラス</th>
-              <th>テスト開始日</th>
+              <th>宿題開始日</th>
               <th>操作</th>
             </tr>
           </thead>

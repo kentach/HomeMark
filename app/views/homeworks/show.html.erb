@@ -17,18 +17,25 @@
       </div>
 
       <% @tasks.each do |task| %>
-        <div id="task-<%= task.id %>" class="homework-show-task-item">
-          <label class="homework-show-task-check-wrap">
-            <div id="homework-show-completed-button-for-task-<%= task.id %>">
-            </div>
+      <div id="task-<%= task.id %>" class="homework-show-task-item">
+        <label class="homework-show-task-check-wrap">
+          <div id="homework-show-completed-button-for-task-<%= task.id %>">
+          </div>
+          <div class="homework-show-task-content">
             <span class="homework-show-task-name">
               <i class="fa-solid fa-square-check"></i>
               <%= task.name %>
             </span>
-            <%= link_to "詳細 >","#", class: "homework-details" %>
-          </label>
-        </div>
-      <% end %>
+            <% if task.pdf.attached? %>
+              <%= link_to url_for(task.pdf), target: "_blank", class: "homework-show-pdf-link" do %>
+                <i class="fas fa-file-pdf"></i>
+                <%= task.pdf.filename %>
+              <% end %>
+            <% end %>
+          </div>
+        </label>
+      </div>
+    <% end %>
     </div>
 
     <%= link_to homeworks_path, class: "back-link" do %>
