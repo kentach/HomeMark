@@ -8,10 +8,12 @@
   background: #ffc0c0;
   box-shadow: -2px 0 8px rgba(0,0,0,0.1);
   clip-path: circle(0 at calc(100% - 120px) 120px);
-  /* circle(半径 at x座標 y座標) */
-  /* X座標: 要素の右端から100px左
-     Y座標: 要素の上から100px下 */
   transition: clip-path 3s ease;
+
+  @media (max-width: 768px) {
+    width: 100vw;  // スマホでは全画面幅
+    padding-top: 60px;
+  }
 }
 
 .hamburger-menu.open {
@@ -32,6 +34,11 @@
   font-size: 1.3rem;
   color: #1e293b;
   transition: 0.3s;
+
+  @media (max-width: 768px) {
+    padding: 14px 24px;  // 左右の余白を縮小
+    font-size: 1.1rem;
+  }
 }
 
 .hamburger-menu li:hover {
@@ -42,6 +49,10 @@
   font-size: 1.4rem;
   opacity: 0.85;
   color: #1e293b;
+
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+  }
 }
 
 /* サイドバー閉じるアイコン */
@@ -54,4 +65,9 @@
   justify-content: center;
   border-radius: 20px;
   cursor: pointer;
+
+  @media (max-width: 768px) {
+    top: 20px;   // 上の位置を調整
+    right: 20px; // 右の位置を調整
+  }
 }
