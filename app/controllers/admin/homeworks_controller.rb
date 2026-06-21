@@ -1,0 +1,61 @@
+class Admin::HomeworksController < ApplicationController
+  layout "admin"
+  before_action :authenticate_user!
+  before_action :authenticate_admin!
+  before_action :set_homework, only: [ :edit, :update, :destroy ]
+
+  def index
+    @homeworks = Homework.all.order(created_at: :desc)
+  end
+
+  def new
+    @homework = Homework.new
+  end
+
+  def create
+    @homework = Homework.new(homework_params)
+    @homework.user_id = current_user.id
+    if @homework.save
+      redirect_to admin_root_path, notice: "宿題を作成しました"
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    if @homework.update(homework_params)
+      redirect_to admin_homeworks_path, notice: "宿題を更新しました"
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    @homework.destroy!
+    redirect_to admin_homeworks_path, notice: "宿題を削除しました"
+  end
+
+  private
+
+  def set_homework
+    @homework = Homework.find(params[ :id ])
+  end
+
+  def authenticate_admin!
+    redirect_to root_path unless current_user.admin?
+  end
+
+  def homework_params
+    params.require(:homework).permit(
+      :title,
+      :status,
+      :test_start_date,
+      :test_end_date,
+      :classroom_id,
+      tasks_attributes: [:id, :name, :pdf, :_destroy]
+    )
+  end
+end

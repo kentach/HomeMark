@@ -26,5 +26,5 @@ class User < ApplicationRecord
     homework.tasks.count == task_completions.where(task: homework.tasks).count
   end
 
-  enum role: { student: 0, teacher: 1 }
+  enum role: { student: 0, admin: 1 }
 end

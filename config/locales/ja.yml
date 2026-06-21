@@ -1,16 +1,14 @@
 ja:
-  helpers:
-    static_pages:
-
+  views:
     registrations:
-      new: ユーザー登録
-      edit: ユーザー
-      password_forget: パスワードをお忘れの方はこちら
+      new: 
+        title: 新規登録
+      edit: 
+        title: ユーザー編集
 
     sessions:
-      new: ログイン
-
-  views:
+      new: 
+        title: ログイン
     homeworks:
       index:
         title: 宿題一覧
