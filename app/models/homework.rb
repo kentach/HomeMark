@@ -18,8 +18,6 @@ class Homework < ApplicationRecord
       title
       status
       test_start_date
-      test_end_date
-      updated_at
     ]
   end
 
