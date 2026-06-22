@@ -5,4 +5,8 @@ class Notification < ApplicationRecord
   validates :status, presence: true
 
   belongs_to :user
+  has_many :notification_classrooms, dependent: :destroy
+  has_many :classrooms, through: :notification_classrooms
+  enum target_type: { all_classrooms: "全クラス", individual: "特定のクラス" }
+  enum notification_type: { correction: "宿題の訂正", monthly_test: "月例単語テスト", other: "その他" }
 end
