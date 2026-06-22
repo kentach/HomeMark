@@ -1,18 +1,21 @@
 <% content_for :title, @homework.title %>
 
 <div class="homework-show">
-  <%= render "homeworks/show_header" %>
-
+  <%= render "homeworks/header" %>
   <div class="homework-show-body">
     <div class="homework-show-task-list">
       <div class="homework-show-task-list-header">
-        <h3>宿題リスト</h3>
+        <h3><%= @homework.title %> 宿題リスト</h3>
         <span class="homework-showtask-list-count"><%= @tasks.size %> タスク</span>
       </div>
-
+      <div class="homeworks-show-test-period">📅 テスト期間：
+          <%= @homework.test_start_date.strftime("%m月%d日") %> 〜
+          <%= @homework.test_end_date.strftime("%m月%d日") %>
+      </div>
       <div class="homework-show-test-info">
         <ul>
           <li>📌 授業前に宿題を必ずチェックしよう！</li>
+          <li>📌 今週の宿題は「マイタスク」をチェックしよう！</li>
         </ul>
       </div>
 
