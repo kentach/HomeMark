@@ -1,8 +1,12 @@
 class VocabularyTestsController < ApplicationController
   def index
     @new_score = VocabularyTest.new(test_date: Date.today)
-    @homeworks = Homework.where(classroom_id: current_user.classroom_id).order(created_at: :desc)
-    @scores = VocabularyTest.includes(:homework).order(test_date: :desc, created_at: :desc)
+    @scores = VocabularyTest.includes(:homework).order(homework_id: :desc)
+    # 登録済みの宿題はリストに表示しない設定
+    # pluck 指定したカラムだけを配列で取り出す
+    registered_homework_ids = current_user.vocabulary_tests.pluck(:homework_id)
+    @homeworks = Homework.where(classroom_id: current_user.classroom_id)
+                         .where.not(id: registered_homework_ids)
   end
 
   def new
@@ -42,7 +46,7 @@ class VocabularyTestsController < ApplicationController
   end
 
   def score_graph
-    @scores = current_user.vocabulary_tests.includes(:homework).order(test_date: :asc)
+    @scores = current_user.vocabulary_tests.includes(:homework).order(homework_id: :asc)
     @score_data = [
       { name: "単語テスト", data: @scores.map { |score| [ score.homework.title, score.vocabulary_score, score.sentence_score ] } },
       { name: "文テスト", data: @scores.map { |score| [ score.homework.title, score.sentence_score, score.sentence_score ] } }

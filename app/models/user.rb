@@ -27,4 +27,12 @@ class User < ApplicationRecord
   end
 
   enum role: { student: 0, admin: 1 }
+
+  def average_vocab_score
+    vocabulary_tests.average(:vocabulary_score)&.round(1) || 0
+  end
+
+  def highest_vocab_score
+    vocabulary_tests.maximum(:vocabulary_score) || 0
+  end
 end
