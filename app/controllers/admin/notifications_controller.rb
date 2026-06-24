@@ -40,6 +40,21 @@ class Admin::NotificationsController < Admin::BaseController
     redirect_to admin_notifications_path, notice: "通知を削除しました。"
   end
 
+  def draft
+    @notifications = Notification.draft
+                                  .page(params[:page]).per(20)
+  end
+
+  def published
+    @notifications = Notification.published
+                                  .page(params[:page]).per(20)
+  end
+
+  def scheduled
+    @notifications = Notification.scheduled
+                                  .page(params[:page]).per(20)
+  end
+
   private
 
   def set_notification

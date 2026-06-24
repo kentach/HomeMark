@@ -12,7 +12,7 @@ class Notification < ApplicationRecord
 
   enum target_type: {
     all_classes: 0,       # クラス全て
-    class_message: 1,     # 個別クラス
+    specific_class: 1,     # 特定のクラス
     junior_high: 2,       # 中高生クラス
     elementary: 3         # 小学生クラス
   }

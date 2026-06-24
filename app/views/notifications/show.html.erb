@@ -28,17 +28,9 @@
       <% end %>
 
       <span class="notification_show_class">
-        <% if @notification.class_message? %>
-          <i class="fa-solid fa-user-group"></i>
-          該当クラス：<%= @notification.classrooms.map(&:name).join("・") %>
-        <% elsif @notification.all_classes? %>
-          <i class="fa-solid fa-users"></i> 全クラス
-        <% elsif @notification.junior_high? %>
-          <i class="fa-solid fa-users"></i> 中高生クラス
-        <% elsif @notification.elementary? %>
-          <i class="fa-solid fa-users"></i> 小学生クラス
-        <% end %>
+        <%= notification_target_label(@notification) %>
       </span>
+
       <%= notification_type_badge(@notification) %>         
     </div>
 

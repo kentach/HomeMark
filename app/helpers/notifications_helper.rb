@@ -27,4 +27,25 @@ module NotificationsHelper
       badge[:label]
     end
   end
+
+  def notification_target_label(notification)
+    if notification.specific_class?
+      content_tag(:span) do
+        content_tag(:i, "", class: "fa-solid fa-user-group") +
+        " クラス：#{notification.classrooms.map(&:name).join("・")}"
+      end
+    elsif notification.all_classes?
+      content_tag(:span) do
+        content_tag(:i, "", class: "fa-solid fa-users") + " 全クラス"
+      end
+    elsif notification.junior_high?
+      content_tag(:span) do
+        content_tag(:i, "", class: "fa-solid fa-users") + " 中高生クラス"
+      end
+    elsif notification.elementary?
+      content_tag(:span) do
+        content_tag(:i, "", class: "fa-solid fa-users") + " 小学生クラス"
+      end
+    end
+  end
 end
