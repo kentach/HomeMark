@@ -42,9 +42,12 @@
         <%= f.label :notification_type, "通知の種別", class: "form-label fw-bold" %>
         <%= f.select :notification_type,
               [
-                ["宿題の訂正",     "correction"],
+                ["宿題の訂正",     "homework_correction"],
                 ["月例単語テスト", "monthly_vocab_test"],
-                ["その他",         "other"]
+                ["イベント",       "event"],
+                ["英検結果",       "eiken_result"],
+                ["お知らせ",       "information"],
+                ["その他",         "others"]
               ],
               { prompt: "種別を選択" },
               class: "form-select" %>
@@ -58,8 +61,10 @@
         <%= f.label :target_type, "送信対象", class: "form-label fw-bold" %>
         <%= f.select :target_type,
               [
-                ["全クラス",   "all_classrooms"],
-                ["クラス別",   "class_message"]
+                ["全クラス",     "all_classes"],
+                ["中高生クラス", "junior_high"],
+                ["小学生クラス", "elementary"],
+                ["クラス個別",   "class_message"]
               ],
               {},
               class: "form-select",
@@ -84,7 +89,10 @@
       <div class="mb-3">
         <%= f.label :status, "ステータス", class: "form-label fw-bold" %>
         <%= f.select :status,
-              [["下書き", "draft"], ["公開", "published"], ["予約送信", "scheduled"]],
+              [ ["下書き", "draft"], 
+                ["公開", "published"], 
+                ["予約送信", "scheduled"]
+              ],
               {},
               class: "form-select",
               id: "status_select" %>
