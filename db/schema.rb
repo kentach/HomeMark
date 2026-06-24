@@ -76,10 +76,10 @@ ActiveRecord::Schema[7.2].define(version: 2026_06_22_132205) do
   create_table "notifications", force: :cascade do |t|
     t.string "title", null: false
     t.text "content", null: false
-    t.string "notification_type"
-    t.string "target_type"
+    t.integer "notification_type", default: 0, null: false
+    t.integer "target_type", default: 0, null: false
     t.datetime "published_at"
-    t.string "status", default: "draft", null: false
+    t.string "integer", default: "0", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -99,6 +99,7 @@ ActiveRecord::Schema[7.2].define(version: 2026_06_22_132205) do
 
   create_table "tasks", force: :cascade do |t|
     t.string "name", null: false
+    t.text "description"
     t.bigint "homework_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
