@@ -1,7 +1,7 @@
 class VocabularyTestsController < ApplicationController
   def index
     score_graph
-    @scores = VocabularyTest.includes(:homework)
+    @scores = current_user.vocabulary_tests.includes(:homework)
                             .order(homework_id: :desc)
                             .page(params[:page]).per(5)
   end

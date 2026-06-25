@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     get "/notifications/draft", to: "notifications#draft", as: :draft_notifications
     get "/notifications/published", to: "notifications#published", as: :published_notifications
     resources :users
+
     # 管理画面ログイン
     get "login" => "user_sessions#new", :as => :login
     post "login" => "user_sessions#create"
