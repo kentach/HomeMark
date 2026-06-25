@@ -38,7 +38,7 @@ user1 = User.create!(
   student_id: "kenta555",
   password: "kenta555",
   password_confirmation: "kenta555",
-  classroom: created_classrooms.find { |class| class.name == "準1級" }
+  classroom: created_classrooms.find { |c| c.name == "準1級" },
   role: 1
 )
 
@@ -47,7 +47,7 @@ user2 = User.create!(
   student_id: "kotaro555",
   password: "kotaro555",
   password_confirmation: "kotaro555",
-  classroom: created_classrooms.find { |class| class.name == "2級" }
+  classroom: created_classrooms.find { |c| c.name == "2級" },
   role: 1
 )
 
@@ -56,7 +56,7 @@ user3 = User.create!(
   student_id: "daiki555",
   password: "daiki555",
   password_confirmation: "daiki555",
-  classroom: created_classrooms.find { |class| class.name == "準2級" }
+  classroom: created_classrooms.find { |c| c.name == "準2級" },
   role: 1
 )
 
@@ -65,7 +65,7 @@ user4 = User.create!(
   student_id: "tsubasa555",
   password: "tsubasa555",
   password_confirmation: "tsubasa555",
-  classroom: created_classrooms.find { |class| class.name == "準2級プラス" }
+  classroom: created_classrooms.find { |c| c.name == "準2級プラス" },
   role: 1
 )
 
@@ -74,7 +74,7 @@ user5 = User.create!(
   student_id: "suzuka555",
   password: "suzuka555",
   password_confirmation: "suzuka555",
-  classroom: created_classrooms.find { |class| class.name == "中学生3級" }
+  classroom: created_classrooms.find { |c| c.name == "中学生3級" },
   role: 1
 )
 
@@ -83,17 +83,16 @@ user5 = User.create!(
   student_id: "mitsuki555",
   password: "mitsuki555",
   password_confirmation: "mitsuki555",
-  classroom: created_classrooms.find { |class| class.name == "小学生高学年5級" }
+  classroom: created_classrooms.find { |c| c.name == "小学生高学年5級" },
   role: 1
 )
+
 
 user6 = User.create!(
   name: "稲荷",
   student_id: "hinako555",
   password: "hinako555",
   password_confirmation: "hinako555",
-  classroom: created_classrooms.find { |class| class.name == "小学生高学年4級" }
+  classroom: created_classrooms.find { |c| c.name == "小学生高学年4級" },
   role: 1
 )
-
-end
