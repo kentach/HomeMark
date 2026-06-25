@@ -2,7 +2,7 @@
   <div class="col-lg-3 col-6">
     <div class="small-box bg-primary">
       <div class="inner">
-        <h3><%= @homeworks.count %></h3>
+        <h3><%= @homeworks.size %></h3>
         <p>宿題総数</p>
       </div>
       <%= link_to "一覧を見る", admin_homeworks_path, class: "small-box-footer text-white" %>
@@ -12,27 +12,27 @@
   <div class="col-lg-3 col-6">
     <div class="small-box bg-success">
       <div class="inner">
-        <h3><%= @published_homeworks.count %></h3>
+        <h3><%= @published_homeworks.size %></h3>
         <p>公開中</p>
       </div>
-      <%= link_to "一覧を見る", published_admin_notifications_path, class: "small-box-footer text-white" %>
+      <%= link_to "一覧を見る", published_admin_homeworks_path, class: "small-box-footer text-white" %>
     </div>
   </div>
 
   <div class="col-lg-3 col-6">
     <div class="small-box bg-warning">
       <div class="inner">
-        <h3><%= @draft_homeworks.count %></h3>
+        <h3><%= @draft_homeworks.size %></h3>
         <p>下書き</p>
       </div>
-      <%= link_to "一覧を見る", draft_admin_notifications_path, class: "small-box-footer text-white" %>
+      <%= link_to "一覧を見る", draft_admin_homeworks_path, class: "small-box-footer text-white" %>
     </div>
   </div>
 
   <div class="col-lg-3 col-6">
     <div class="small-box bg-info">
       <div class="inner">
-        <h3><%= @classrooms.count %></h3>
+        <h3><%= @classrooms.size %></h3>
         <p>クラス数</p>
       </div>
       <%= link_to "クラス一覧", admin_classrooms_path, class: "small-box-footer text-white" %>
