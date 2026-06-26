@@ -7,32 +7,53 @@
     <div class="sidebar-wrapper">
       <nav class="mt-2">
         <ul class="nav sidebar-menu flex-column" data-lte-toggle="treeview" role="menu">
+          
           <li class="nav-item">
-            <%= link_to "+ トップ", admin_root_path, class:"nav-link" %>
+            <%= link_to admin_root_path, class: "nav-link d-flex align-items-center gap-1" do %>
+              <i class="fa-solid fa-book-open"></i> 宿題トップ
+            <% end %>
           </li>
 
           <li class="nav-item">
-            <%= link_to "+ 宿題 一覧", admin_homeworks_path, class:"nav-link" %>
+            <%= link_to admin_homeworks_path, class: "nav-link d-flex align-items-center gap-1" do %>
+              <i class="fa-solid fa-file-lines"></i> 宿題一覧
+            <% end %>
           </li>
 
           <li class="nav-item">
-            <%= link_to "+ 通知 一覧", admin_notifications_path, class:"nav-link" %>
+            <%= link_to new_admin_homework_path, class: "nav-link d-flex align-items-center gap-1" do %>
+              <i class="fa-solid fa-pen-to-square"></i> 宿題 作成
+            <% end %>
           </li>
 
           <li class="nav-item">
-            <%= link_to "+ 宿題 新規作成", new_admin_homework_path, class:"nav-link" %>
+            <%= link_to admin_notifications_path, class: "nav-link d-flex align-items-center gap-1" do %>
+              <i class="fa-solid fa-bell"></i> 通知 一覧
+            <% end %>
           </li>
 
           <li class="nav-item">
-            <%= link_to "+ クラス 新規作成", new_admin_classroom_path, class:"nav-link" %>
+            <%= link_to new_admin_notification_path, class: "nav-link d-flex align-items-center gap-1" do %>
+              <i class="fa-solid fa-comment-dots"></i> 通知 作成
+            <% end %>
           </li>
 
           <li class="nav-item">
-            <%= link_to "+ ユーザー管理", admin_users_path, class:"nav-link" %>
+            <%= link_to new_admin_classroom_path, class: "nav-link d-flex align-items-center gap-1" do %>
+              <i class="fa-solid fa-chalkboard-user"></i> クラス 作成
+            <% end %>
           </li>
 
           <li class="nav-item">
-            <%= link_to "ログアウト", admin_logout_path, method: :delete, form: { data: { turbo: false } }, class: "nav-link" %>
+            <%= link_to admin_users_path, class: "nav-link d-flex align-items-center gap-1" do %>
+              <i class="fa-solid fa-user-plus"></i> ユーザー 管理
+            <% end %>
+          </li>
+
+          <li class="nav-item">
+            <%= link_to admin_logout_path, method: :delete, form: { data: { turbo: false } }, class: "nav-link d-flex align-items-center gap-1" do %>
+              <i class="fa-solid fa-right-from-bracket"></i> ログアウト
+            <% end %>
           </li>
         </ul>
       </nav>

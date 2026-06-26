@@ -1,5 +1,4 @@
 class Admin::ClassroomsController < Admin::BaseController
-  layout "layouts/admin"
   before_action :set_classroom, only: [ :edit, :update, :destroy ]
 
   def index
@@ -15,6 +14,7 @@ class Admin::ClassroomsController < Admin::BaseController
     if @classroom.save
       redirect_to admin_classrooms_path, notice: "クラスを作成しました"
     else
+      flash.now[:danger] = "作成できませんでした。"
       render :new, status: :unprocessable_entity
     end
   end
