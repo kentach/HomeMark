@@ -55,32 +55,37 @@
       <button class="task-index-tab" data-tab="completed">完了</button>
     </div>
 
+  <% if @tasks.any? %>
     <% @tasks.each do |task| %>
-    <div
-      id="task-<%= task.id %>"
-      class="task-index-item <%= 'completed' if current_user.completed?(task) %>"
-      data-status="<%= current_user.completed?(task) ? 'completed' : 'incomplete' %>">
+      <div
+        id="task-<%= task.id %>"
+        class="task-index-item <%= 'completed' if current_user.completed?(task) %>"
+        data-status="<%= current_user.completed?(task) ? 'completed' : 'incomplete' %>">
 
-      <label class="task-index-check-wrap">
-        <div id="completed-button-for-task-<%= task.id %>">
-          <%= render 'tasks/completed_button', task: task %>
-        </div>
-        <span class="task-index-name">
-          <%= task.name %>
-        </span>
-        <% if task.pdf.attached? %>
-          <%= link_to url_for(task.pdf), target: "_blank", class: "homework-show-pdf-link" do %>
-            <i class="fas fa-file-pdf"></i>
-            file
+        <label class="task-index-check-wrap">
+          <div id="completed-button-for-task-<%= task.id %>">
+            <%= render 'tasks/completed_button', task: task %>
+          </div>
+          <span class="task-index-name">
+            <%= task.name %>
+          </span>
+          <% if task.pdf.attached? %>
+            <%= link_to url_for(task.pdf), target: "_blank", class: "homework-show-pdf-link" do %>
+              <i class="fas fa-file-pdf"></i>
+              file
+            <% end %>
           <% end %>
-        <% end %>
-      </label>
-      
-    </div>
-  <% end %>
+        </label>
+      </div>
+    <% end %>
 
-  <% if @tasks.empty? %>
-    <div>タスクはありません。</div>
+  <% else %>
+
+    <div class="notification_empty">
+      <p>タスクはありません。</p>
+      <i class="fa-regular fa-bell-slash"></i>
+    </div>
+    
   <% end %>
   </div>
 </div>

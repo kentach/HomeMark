@@ -33,66 +33,27 @@ created_classrooms = classrooms.map do |name, level|
   )
 end
 
-user1 = User.create!(
-  name: "上拾石",
-  student_id: "kenta555",
-  password: "kenta555",
-  password_confirmation: "kenta555",
-  classroom: created_classrooms.find { |c| c.name == "準1級" },
-  role: 1
-)
+users_data = [
+  [ "上拾石", "kenta555",   "準1級"         ],
+  [ "大川",   "kotaro555",  "2級"           ],
+  [ "片山",   "daiki555",   "準2級"         ],
+  [ "矢野",   "tsubasa555", "準2級プラス"    ],
+  [ "宮田",   "suzuka555",  "中学生3級"     ],
+  [ "大塚",   "mitsuki555", "小学生高学年5級"],
+  [ "稲荷",   "hinako555",  "小学生高学年4級"],
+  [ "ゲスト",   "guest555",  "TOEIC"]
+]
 
-user2 = User.create!(
-  name: "大川",
-  student_id: "kotaro555",
-  password: "kotaro555",
-  password_confirmation: "kotaro555",
-  classroom: created_classrooms.find { |c| c.name == "2級" },
-  role: 1
-)
-
-user3 = User.create!(
-  name: "片山",
-  student_id: "daiki555",
-  password: "daiki555",
-  password_confirmation: "daiki555",
-  classroom: created_classrooms.find { |c| c.name == "準2級" },
-  role: 1
-)
-
-user4 = User.create!(
-  name: "矢野",
-  student_id: "tsubasa555",
-  password: "tsubasa555",
-  password_confirmation: "tsubasa555",
-  classroom: created_classrooms.find { |c| c.name == "準2級プラス" },
-  role: 1
-)
-
-user5 = User.create!(
-  name: "宮田",
-  student_id: "suzuka555",
-  password: "suzuka555",
-  password_confirmation: "suzuka555",
-  classroom: created_classrooms.find { |c| c.name == "中学生3級" },
-  role: 1
-)
-
-user5 = User.create!(
-  name: "大塚",
-  student_id: "mitsuki555",
-  password: "mitsuki555",
-  password_confirmation: "mitsuki555",
-  classroom: created_classrooms.find { |c| c.name == "小学生高学年5級" },
-  role: 1
-)
+users = users_data.map do |name, student_id, classroom_name|
+  User.create!(
+    name: name,
+    student_id: student_id,
+    password: student_id,
+    password_confirmation: student_id,
+    classroom: find_class(classrooms, classroom_name),
+    role: 1
+  )
+end
 
 
-user6 = User.create!(
-  name: "稲荷",
-  student_id: "hinako555",
-  password: "hinako555",
-  password_confirmation: "hinako555",
-  classroom: created_classrooms.find { |c| c.name == "小学生高学年4級" },
-  role: 1
-)
+
