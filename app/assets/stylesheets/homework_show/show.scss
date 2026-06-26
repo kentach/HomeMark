@@ -222,7 +222,6 @@ $green-l:   #34d399;
 // ヒントバナー
 .homework-show-test-info {
   background: #fff8f0;
-  border-bottom: 1px solid #e07b00;
   padding: 10px 16px;
 
   ul {
@@ -252,6 +251,7 @@ $green-l:   #34d399;
   border-bottom: 1px solid $gray-200;
   position: relative;
   background: $white;
+  border-radius: 8px;
   margin-bottom: 6px;
   transition: transform 0.2s ease;
 
