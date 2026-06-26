@@ -1,16 +1,14 @@
 class Admin::BaseController < ApplicationController
-  before_action :authenticate_user!
-  before_action :authenticate_admin!
+  before_action :authenticate_user! # ログイン確認
+  before_action :authenticate_admin! # 管理者確認
   layout "admin"
 
   private
 
-  def not_authenticated
-    flash[:warning] = t("defaults.flash_message.require_login")
-    redirect_to admin_login_path
-  end
-
   def authenticate_admin!
-    redirect_to admin_login_path unless current_user&.admin?
+    unless current_user&.admin?
+      flash[:danger] = "ログインしてください。"
+      redirect_to admin_login_path
+    end
   end
 end

@@ -13,6 +13,8 @@ class User < ApplicationRecord
   has_many :vocabulary_tests, dependent: :destroy
   has_many :notifications, dependent: :destroy
 
+  enum role: { student: 0, admin: 1 }
+
   def email_required?
     false
   end
@@ -41,8 +43,6 @@ class User < ApplicationRecord
     return false if homework.tasks.empty?
     homework.tasks.count == task_completions.where(task: homework.tasks).count
   end
-
-  enum role: { student: 0, admin: 1 }
 
   def average_vocab_score
     vocabulary_tests.average(:vocabulary_score)&.round(1) || 0
